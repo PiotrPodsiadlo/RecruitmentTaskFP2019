@@ -17,7 +17,12 @@ public class User {
     private Long id;
     private String name;
     private String password;
-    @ManyToMany
-    private List<Share> shares;
     private double financialResources;
+    private int quantityFP;
+    private int quantityFPL;
+    private int quantityFPC;
+    private int quantityPGB;
+    private int quantityFPA;
+    private int quantityDL24;
+
 }
