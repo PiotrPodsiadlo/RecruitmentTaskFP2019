@@ -65,7 +65,9 @@ public class HomeController {
 
     @GetMapping("/admin")
     public String userInfo(@AuthenticationPrincipal UserDetails customUser, Model model) {
-        model.addAttribute("username", customUser.getUsername());
+        User user = userService.findByName(customUser.getUsername());
+        model.addAttribute("user", customUser);
+        model.addAttribute("money", user.getFinancialResources());
 
         return "userPanel";
 

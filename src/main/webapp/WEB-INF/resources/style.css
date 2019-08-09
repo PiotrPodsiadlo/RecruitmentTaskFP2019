@@ -1,14 +1,25 @@
-div {
+.heading {
 
     border-style: solid;
     border-color: black;
 }
-body{
-    background-color: darkred;
-}
+
 
 p {
     font-family: verdana;
     font-size: 20px;
-    background-color: rebeccapurple;
+}
+
+.shares {
+
+
+}
+
+.wallet {
+
+
+}
+
+table, th, td {
+    border: 1px solid black;
 }

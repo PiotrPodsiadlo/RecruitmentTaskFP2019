@@ -13,15 +13,109 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="/WEB-INF/resources/style.css" rel="stylesheet" type="text/css">
+    <style>
+        <%@include file="/WEB-INF/resources/style.css" %>
+    </style>
 </head>
 <body>
-<header>
-    <div>Stocks</div>
-    <div align="right"><c:out value="logged in as ${username}"/></div>
-</header>
 
 
+    <div style="border: black solid">
+        aaa
+        <div style="float:left">
+            <h2>  Stocks</h2>
+        </div>
+        <div style="float:right">
+            <h2> <c:out value="logged in as ${user.getUsername()}"/></h2>
+        </div>
+    </br>
+    </div>
+
+
+    <div style="float: left">
+        <table>
+            <table class="tg">
+                <tr>
+                    <th class="tg-0lax" colspan="3">Stock prices</th>
+                </tr>
+                <tr>
+                    <td class="tg-2wmj">Company</td>
+                    <td class="tg-m71n">Value</td>
+                    <td class="tg-m71n">Actions</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+            </table>
+
+        </table>
+    </div>
+
+    <div style="float: right">
+        <table>
+            <table class="tg">
+                <tr>
+                    <th class="tg-0lax" colspan="5">My wallet</th>
+                </tr>
+                <tr>
+                    <td class="tg-2wmj">Company</td>
+                    <td class="tg-m71n">Unit price</td>
+                    <td class="tg-m71n">Amount</td>
+                    <td class="tg-m71n">Value</td>
+                    <td class="tg-m71n">Actions</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"></td>
+                </tr>
+                <tr>
+                    <th class="tg-0lax" colspan="5">Available Money: <c:out value=" ${money}"/> </th>
+                </tr>
+            </table>
+
+        </table>
+    </div>
 
 </body>
 </html>
