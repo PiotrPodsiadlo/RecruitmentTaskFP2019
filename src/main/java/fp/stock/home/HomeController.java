@@ -40,6 +40,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
+        User user = new User();
+        user.setName("admin");
+        user.setPassword("admin");
+        userService.save(user);
         return "home";
     }
 
@@ -60,10 +64,11 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-
-    public String userInfo(@AuthenticationPrincipal UserDetails customUser) {
+    public String userInfo(@AuthenticationPrincipal UserDetails customUser, Model model) {
+        model.addAttribute("username", customUser.getUsername());
 
         return "userPanel";
+
     }
 
 
