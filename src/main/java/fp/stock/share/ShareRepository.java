@@ -1,11 +1,9 @@
-package fp.stock.user;
+package fp.stock.share;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository  extends JpaRepository<User, Long> {
-
-
+public interface ShareRepository  extends JpaRepository<Share, Long> {
 }
