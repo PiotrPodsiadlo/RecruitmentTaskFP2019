@@ -1,5 +1,4 @@
 package fp.stock.user;
-import fp.stock.role.Role;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
@@ -22,9 +21,5 @@ public class User {
     private int quantityPGB;
     private int quantityFPA;
     private int quantityDL24;
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-////    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-////            inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private Set<Role> roles;
     private int enabled;
 }

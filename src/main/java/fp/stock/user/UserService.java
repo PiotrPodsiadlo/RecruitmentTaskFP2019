@@ -1,7 +1,6 @@
 package fp.stock.user;
 
 
-import fp.stock.role.Role;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,6 @@ import java.util.HashSet;
 public class UserService {
 
     private final UserRepository userRepository;
-//    private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
@@ -34,9 +32,6 @@ public class UserService {
         user.setQuantityFPL(user1.getQuantityFPL());
         user.setQuantityPGB(user1.getQuantityPGB());
         user.setEnabled(1);
-//        Role userRole = roleRepository.findByName("ROLE_USER");
-//        Role userRole = new Role();
-//        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
