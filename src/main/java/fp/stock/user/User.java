@@ -1,6 +1,7 @@
 package fp.stock.user;
 import lombok.Data;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -11,8 +12,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
+    @Size(min = 2)
     private String name;
     @Column(nullable = false)
+    @Size(min = 2)
     private String password;
     private double financialResources;
     private int quantityFP;
