@@ -58,8 +58,8 @@ public class HomeController {
 
             return "registerForm";
         }
-//        userService.save(user);
-        return "userPanel";
+        userService.save(user);
+        return "home";
     }
 
 

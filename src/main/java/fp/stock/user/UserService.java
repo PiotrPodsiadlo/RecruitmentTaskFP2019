@@ -1,32 +1,48 @@
 package fp.stock.user;
 
 
+import fp.stock.role.Role;
+import fp.stock.role.RoleRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 @Service
 @Transactional
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void save(User user1){
         User user = new User();
         user.setName(user1.getName());
-        user.setPassword(user1.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setFinancialResources(user1.getFinancialResources());
-
         user.setQuantityFP(user1.getQuantityFP());
         user.setQuantityFPA(user1.getQuantityFPA());
         user.setQuantityDL24(user1.getQuantityDL24());
         user.setQuantityFPC(user1.getQuantityFPC());
         user.setQuantityFPL(user1.getQuantityFPL());
         user.setQuantityPGB(user1.getQuantityPGB());
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+    }
+
+    public User findByName(String name){
+       return userRepository.findByName(name);
     }
 
 }
