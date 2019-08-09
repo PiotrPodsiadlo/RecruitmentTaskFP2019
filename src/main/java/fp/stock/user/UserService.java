@@ -27,7 +27,7 @@ public class UserService {
     public void save(User user1){
         User user = new User();
         user.setName(user1.getName());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user1.getPassword()));
         user.setFinancialResources(user1.getFinancialResources());
         user.setQuantityFP(user1.getQuantityFP());
         user.setQuantityFPA(user1.getQuantityFPA());

@@ -1,5 +1,6 @@
 package fp.stock.securityConfiguration;
 
+import fp.stock.user.SpringDataUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,7 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
+    @Bean
+    public SpringDataUserDetailsService customUserDetailsService() {
+        return new SpringDataUserDetailsService();
+    }
 
 
 }
