@@ -12,7 +12,7 @@
 </head>
 <body>
 welcome!
-<a href="/login">sign in</a>
+<a href="/admin">sign in</a>
 <a href="/create">register</a>
 </body>
 </html>

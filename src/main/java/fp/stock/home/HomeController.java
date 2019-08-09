@@ -9,6 +9,8 @@ import fp.stock.user.UserRepository;
 import fp.stock.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,11 +43,6 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/login")
-    public String loginUser() {
-        return "userPanel";
-    }
-
 
     @GetMapping("/create")
     public String createUser(Model model) {
@@ -60,6 +57,13 @@ public class HomeController {
         }
         userService.save(user);
         return "home";
+    }
+
+    @GetMapping("/admin")
+
+    public String userInfo(@AuthenticationPrincipal UserDetails customUser) {
+
+        return "userPanel";
     }
 
 
