@@ -8,12 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-@Data
+//@Entity
+//@Data
 public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    public Role() {
+        this.name = "ROLE_USER";
+    }
 }
