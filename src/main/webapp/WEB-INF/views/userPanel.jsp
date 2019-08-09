@@ -13,9 +13,15 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="/WEB-INF/resources/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-welcome to user panel
-<c:out value="logged in as ${username}"/>
+<header>
+    <div>Stocks</div>
+    <div align="right"><c:out value="logged in as ${username}"/></div>
+</header>
+
+
+
 </body>
 </html>
