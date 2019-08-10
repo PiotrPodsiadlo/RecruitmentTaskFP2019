@@ -63,7 +63,8 @@ public class HomeController {
     public String userInfo(@AuthenticationPrincipal UserDetails customUser, Model model) {
         User user = userService.findByName(customUser.getUsername());
         model.addAttribute("user", customUser);
-        model.addAttribute("money", user.getFinancialResources());
+        model.addAttribute("realUser", user);
+        model.addAttribute("shares", shareRepository.findAll());
 
         return "userPanel";
 

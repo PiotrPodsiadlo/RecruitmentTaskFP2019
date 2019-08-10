@@ -43,26 +43,15 @@
                     <td class="tg-m71n">Value</td>
                     <td class="tg-m71n">Actions</td>
                 </tr>
-                <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
-                <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
-                <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
-                <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
+                <c:forEach items="${shares}" var="share">
+                    <tr>
+                        <td class="tg-0lax"><c:out value="${share.name}"/></td>
+                        <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
+                        <td class="tg-0lax">buy</td>
+                    </tr>
+                </c:forEach>
+
+
             </table>
 
         </table>
@@ -81,36 +70,19 @@
                     <td class="tg-m71n">Value</td>
                     <td class="tg-m71n">Actions</td>
                 </tr>
+                <c:forEach items="${shares}" var="share">
+
                 <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
+                    <td class="tg-0lax"><c:out value=" ${share.name}"/></td>
+                    <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFP}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFP * share.unitPrice}"/></td>
+                    <td class="tg-0lax">sell</td>
                 </tr>
+                </c:forEach>
+
                 <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
-                <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
-                <tr>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                </tr>
-                <tr>
-                    <th class="tg-0lax" colspan="5">Available Money: <c:out value=" ${money}"/> </th>
+                    <th class="tg-0lax" colspan="5">Available Money: <c:out value=" ${realUser.financialResources}"/> </th>
                 </tr>
             </table>
 
