@@ -27,7 +27,7 @@
             <h2>  Stocks</h2>
         </div>
         <div style="float:right">
-            <h2> <c:out value="logged in as ${user.getUsername()}"/></h2>
+            <h2> <c:out value="logged in as ${user.getUsername()}"/> <a href="/edit"> edit profile </a> <a href="/login?logout"> logout </a> </h2>
         </div>
     </br>
     </div>

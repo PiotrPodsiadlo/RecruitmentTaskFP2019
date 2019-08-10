@@ -15,19 +15,19 @@
 </head>
 <body>
 create user:
-<form:form method="post" action="/create" modelAttribute="user">
+<form:form method="post" action="/edit" modelAttribute="user">
     <table>
         <tr>
             <td>
-                <div>Name of user:</div><form:input path="name" type="text" /></br>
+                <div>New username:</div><form:input path="name" type="text" /></br>
                 <form:errors path="name" cssClass="error" />
             </td>
             <td>
-                <div>password:</div><form:input path="password" type="password" /></br>
+                <div>New password:</div><form:input path="password" type="password" /></br>
                 <form:errors path="password" cssClass="error" />
             </td>
             <td>
-                <div>money in PLN:</div><form:input path="financialResources" type="number"/></br>
+                <div>Money in PLN:</div><form:input path="financialResources" type="number"/></br>
                 <form:errors path="financialResources" cssClass="error" />
             </td>
         </tr>

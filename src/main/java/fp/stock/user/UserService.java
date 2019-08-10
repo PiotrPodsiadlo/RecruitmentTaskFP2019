@@ -3,6 +3,7 @@ package fp.stock.user;
 
 import fp.stock.share.Share;
 import fp.stock.share.ShareRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,18 @@ public class UserService {
         user.setEnabled(1);
         userRepository.save(user);
     }
+
+    public void update(User user1, UserDetails customUser){
+        User user = findByName(customUser.getUsername());
+//        user.setId(user1.getId());
+        user.setName(user1.getName());
+        user.setPassword(passwordEncoder.encode(user1.getPassword()));
+        user.setFinancialResources(user1.getFinancialResources());
+
+        user.setEnabled(1);
+        userRepository.save(user);
+    }
+
 
     public User findByName(String name){
        return userRepository.findByName(name);

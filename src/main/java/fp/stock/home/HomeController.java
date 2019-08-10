@@ -95,4 +95,21 @@ public class HomeController {
 
 
 
+    @GetMapping("/edit")
+    public String editUser(@AuthenticationPrincipal UserDetails customUser, Model model) {
+        User user = userService.findByName(customUser.getUsername());
+        model.addAttribute("user", user);
+        return "editForm";
+    }
+    @PostMapping("/edit")
+    public String updateUser(@AuthenticationPrincipal UserDetails customUser, @Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+
+            return "editForm";
+        }
+        userService.update(user, customUser);
+        return "home";
+    }
+
+
 }
