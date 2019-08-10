@@ -23,7 +23,7 @@ create user:
                 <form:errors path="name" cssClass="error" />
             </td>
             <td>
-                <div>New password:</div><form:input path="password" type="password" /></br>
+                <div>New password:</div><form:input path="password" type="password" value="1111" /></br>
                 <form:errors path="password" cssClass="error" />
             </td>
             <td>
