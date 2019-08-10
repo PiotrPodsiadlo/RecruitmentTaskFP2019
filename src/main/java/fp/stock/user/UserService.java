@@ -40,13 +40,14 @@ public class UserService {
 
 
     public void buyShares(User user, Share share){
-        if(share.getQuantity()>0) {
+        if(share.getQuantity()>0 && user.getFinancialResources()>=share.getUnitPrice()) {
             user.addShares(share);
+            user.setFinancialResources(user.getFinancialResources()-share.getUnitPrice());
             share.setQuantity(share.getQuantity()-1);
             userRepository.save(user);
             shareRepository.save(share);
         }else{
-            System.out.println("not enough shares of this type");
+            System.out.println("not enough shares of this type or not enough mney to buy");
         }
     }
 
