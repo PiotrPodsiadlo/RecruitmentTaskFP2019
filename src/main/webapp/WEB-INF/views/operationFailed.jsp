@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <br>
-Operation failed due to insuficient resources or lack of shares on market.</br>
+Operation failed due to insufficient resources or lack of shares on market.</br>
 <p><a href="/admin">go back to main panel</a></p>
 </body>
 </html>
