@@ -77,8 +77,12 @@ public class HomeController {
     public String buyStock(@PathVariable Long id, @AuthenticationPrincipal UserDetails customUser, Model model) {
         Share share = shareRepository.getOne(id);
         User user = userService.findByName(customUser.getUsername());
-        userService.buyShares(user, share);
-        return "redirect:/admin";
+        boolean isBought = userService.buyShares(user, share);
+        if (isBought) {
+            return "redirect:/admin";
+        }else{
+            return "operationFailed";
+        }
     }
 
     @PostMapping("/sell/{id}")
