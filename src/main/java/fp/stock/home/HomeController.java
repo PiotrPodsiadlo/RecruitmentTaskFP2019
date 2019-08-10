@@ -40,10 +40,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        User user = new User();
-        user.setName("admin");
-        user.setPassword("admin");
-        userService.save(user);
         return "home";
     }
 
