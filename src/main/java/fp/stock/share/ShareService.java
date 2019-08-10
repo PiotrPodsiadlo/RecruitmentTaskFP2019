@@ -24,14 +24,14 @@ public class ShareService {
     }
 
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 10000)
     public void updateSharePrice() {
         RestTemplate restTemplate = new RestTemplate();
         StockFixtures stockFixtures = restTemplate.getForObject("http://webtask.future-processing.com:8068/stocks", StockFixtures.class);
         List<StockItem> items = stockFixtures.getItems();
         List<Share> sharesToPriceUpdate = shareRepository.findAll();
         log.info(sharesToPriceUpdate.toString());
-        log.info(items.toString());
+
 
         for (Share share: sharesToPriceUpdate) {
             Optional<StockItem> matchingObjectitems = items.stream().filter(i -> i.getCode().equals(share.getName())).findFirst();
