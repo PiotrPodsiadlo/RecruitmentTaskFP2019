@@ -5,7 +5,6 @@ import fp.stock.share.Share;
 import fp.stock.share.ShareRepository;
 import fp.stock.share.ShareService;
 import fp.stock.user.User;
-import fp.stock.user.UserDto;
 import fp.stock.user.UserRepository;
 import fp.stock.user.UserService;
 
