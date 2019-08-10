@@ -8,8 +8,7 @@ import fp.stock.user.User;
 import fp.stock.user.UserDto;
 import fp.stock.user.UserRepository;
 import fp.stock.user.UserService;
-import fp.stock.userConcreteShare.UserConcreteShare;
-import fp.stock.userConcreteShare.UserConcreteShareRepository;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,15 +28,15 @@ public class HomeController {
     private UserRepository userRepository;
     private ShareService shareService;
     private ShareRepository shareRepository;
-    private UserConcreteShareRepository userConcreteShareRepository;
+
 
     @Autowired
-    public HomeController(UserService userService, UserRepository userRepository, ShareService shareService, ShareRepository shareRepository, UserConcreteShareRepository userConcreteShareRepository) {
+    public HomeController(UserService userService, UserRepository userRepository, ShareService shareService, ShareRepository shareRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.shareService = shareService;
         this.shareRepository = shareRepository;
-        this.userConcreteShareRepository = userConcreteShareRepository;
+
 
 
 
@@ -79,12 +78,8 @@ public class HomeController {
     public String buyStock(@PathVariable Long id, @AuthenticationPrincipal UserDetails customUser, Model model) {
         Share share = shareRepository.getOne(id);
         User user = userService.findByName(customUser.getUsername());
-        UserConcreteShare userConcreteShare = new UserConcreteShare();
-        userConcreteShare.setShare(share);
-        userConcreteShare.setUser(user);
-        userConcreteShareRepository.save(userConcreteShare);
-
-        return "userPanel";
+        userService.buyShares(user, share);
+        return "redirect:/admin";
     }
 
 

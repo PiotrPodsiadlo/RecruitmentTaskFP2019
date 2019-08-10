@@ -1,5 +1,5 @@
 package fp.stock.user;
-import fp.stock.userConcreteShare.UserConcreteShare;
+import fp.stock.share.Share;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -20,7 +20,13 @@ public class User {
     @Size(min = 2)
     private String password;
     private double financialResources;
-    @OneToMany(mappedBy = "user")
-    private List<UserConcreteShare> userConcreteShares = new ArrayList<>();
+    @ManyToMany
+    private List<Share> Shares = new ArrayList<>();
     private int enabled;
+
+
+    public User addShares(Share share) {
+        Shares.add(share);
+        return this;
+    }
 }

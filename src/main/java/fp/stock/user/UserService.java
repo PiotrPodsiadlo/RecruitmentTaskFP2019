@@ -1,6 +1,8 @@
 package fp.stock.user;
 
 
+import fp.stock.share.Share;
+import fp.stock.share.ShareRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,10 +16,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final ShareRepository shareRepository;
 
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, ShareRepository shareRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.shareRepository = shareRepository;
     }
 
     public void save(User user1){
@@ -32,6 +36,18 @@ public class UserService {
 
     public User findByName(String name){
        return userRepository.findByName(name);
+    }
+
+
+    public void buyShares(User user, Share share){
+        if(share.getQuantity()>0) {
+            user.addShares(share);
+            share.setQuantity(share.getQuantity()-1);
+            userRepository.save(user);
+            shareRepository.save(share);
+        }else{
+            System.out.println("not enough shares of this type");
+        }
     }
 
 }

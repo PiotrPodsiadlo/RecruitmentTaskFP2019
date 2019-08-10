@@ -9,6 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -45,14 +46,15 @@
                 </tr>
                 <c:forEach items="${shares}" var="share">
                     <tr>
+                        <C:if test="${share.quantity>0}">
                         <td class="tg-0lax"><c:out value="${share.name}"/></td>
                         <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
                         <td class="tg-0lax">
                             <form:form method="post" action="/buy/${share.id}" modelAttribute="user">
-
                                 <input type="submit" value="buy">
                             </form:form>
                         </td>
+                        </C:if>
                     </tr>
                 </c:forEach>
 
