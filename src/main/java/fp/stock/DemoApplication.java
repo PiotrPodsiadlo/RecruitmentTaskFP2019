@@ -1,6 +1,8 @@
 package fp.stock;
 
 import fp.stock.restScheduler.Quote;
+import fp.stock.restScheduler.StockFixtures;
+import fp.stock.restScheduler.StockItem;
 import fp.stock.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +34,8 @@ public class DemoApplication {
     @Bean
     public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
         return args -> {
-            Quote quote = restTemplate.getForObject(
-                    "https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+            StockFixtures quote = restTemplate.getForObject(
+                    "http://webtask.future-processing.com:8068/stocks", StockFixtures.class);
             log.info(quote.toString());
         };
     }
