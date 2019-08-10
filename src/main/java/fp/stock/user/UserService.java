@@ -3,6 +3,7 @@ package fp.stock.user;
 
 import fp.stock.share.Share;
 import fp.stock.share.ShareRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -78,6 +79,10 @@ public class UserService {
         userRepository.save(user);
         shareRepository.save(share);
 
+    }
+    @Scheduled(fixedRate = 2000)
+    public void dupa(){
+        System.out.println("dupa");
     }
 
 }
