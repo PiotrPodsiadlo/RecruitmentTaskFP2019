@@ -21,14 +21,16 @@
 <body>
 
 
-    <div style="border: black solid">
-        aaa
+    <div >
+
         <div style="float:left">
             <h2>  Stocks</h2>
         </div>
         <div style="float:right">
             <h2> <c:out value="logged in as ${user.getUsername()}"/> <a href="/edit"> edit profile </a> <a href="/login?logout"> logout </a> </h2>
         </div>
+    </br>
+    </br>
     </br>
     </div>
 
