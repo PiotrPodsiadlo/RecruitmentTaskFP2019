@@ -25,12 +25,7 @@ public class UserService {
         user.setName(user1.getName());
         user.setPassword(passwordEncoder.encode(user1.getPassword()));
         user.setFinancialResources(user1.getFinancialResources());
-        user.setQuantityFP(user1.getQuantityFP());
-        user.setQuantityFPA(user1.getQuantityFPA());
-        user.setQuantityDL24(user1.getQuantityDL24());
-        user.setQuantityFPC(user1.getQuantityFPC());
-        user.setQuantityFPL(user1.getQuantityFPL());
-        user.setQuantityPGB(user1.getQuantityPGB());
+
         user.setEnabled(1);
         userRepository.save(user);
     }

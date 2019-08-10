@@ -1,6 +1,7 @@
-package fp.stock.userWallet;
+package fp.stock.userConcreteShare;
 
 import fp.stock.share.Share;
+import fp.stock.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,11 +9,12 @@ import java.util.List;
 
 @Entity
 @Data
-public class UserWallet {
+public class UserConcreteShare {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToMany
-    private List<Share> userShares;
+    @OneToOne
+    private Share usersShare;
+    private Long quantityOfUserShares;
 }

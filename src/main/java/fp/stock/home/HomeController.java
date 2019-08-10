@@ -7,6 +7,7 @@ import fp.stock.user.User;
 import fp.stock.user.UserDto;
 import fp.stock.user.UserRepository;
 import fp.stock.user.UserService;
+import fp.stock.userConcreteShare.UserConcreteShare;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -59,18 +60,17 @@ public class HomeController {
         return "home";
     }
 
+
+
+
+
     @GetMapping("/admin")
     public String userInfo(@AuthenticationPrincipal UserDetails customUser, Model model) {
         User user = userService.findByName(customUser.getUsername());
         model.addAttribute("user", customUser);
         model.addAttribute("realUser", user);
         model.addAttribute("shares", shareRepository.findAll());
-        model.addAttribute("FP", shareRepository.findFirstByName("FP"));
-        model.addAttribute("FPL", shareRepository.findFirstByName("FPL"));
-        model.addAttribute("FPC", shareRepository.findFirstByName("FPC"));
-        model.addAttribute("PGB", shareRepository.findFirstByName("PGB"));
-        model.addAttribute("FPA", shareRepository.findFirstByName("FPA"));
-        model.addAttribute("DL24", shareRepository.findFirstByName("DL24"));
+
 
         return "userPanel";
 

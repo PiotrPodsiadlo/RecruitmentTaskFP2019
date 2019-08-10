@@ -18,18 +18,12 @@ create user:
 <form:form method="post" action="/create" modelAttribute="user">
     <table>
         <tr>
-            <td>
-                <div>Name of user:</div><form:input path="name" type="text" /></br>
-                <form:errors path="name" cssClass="error" />
-            </td>
-            <td>
-                <div>password:</div><form:input path="password" type="text" /></br>
-                <form:errors path="password" cssClass="error" />
-            </td>
-            <td>
-                <div>money in PLN:</div><form:input path="financialResources" type="number"/></br>
-                <form:errors path="financialResources" cssClass="error" />
-            </td>
+            <c:forEach items="${sharesToChoose}" var="share">
+                <td>
+                    <div>Amount of <c:out value="${share.name}"/>:</div><form:input path="userConcreteShares" type="number"/></br>
+                    <form:errors path="financialResources" cssClass="error" />
+                </td>
+            </c:forEach>
         </tr>
         <tr>
 

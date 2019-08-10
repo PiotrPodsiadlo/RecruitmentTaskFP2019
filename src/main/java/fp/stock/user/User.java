@@ -1,8 +1,9 @@
 package fp.stock.user;
+import fp.stock.userConcreteShare.UserConcreteShare;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,11 +19,9 @@ public class User {
     @Size(min = 2)
     private String password;
     private double financialResources;
-    private int quantityFP;
-    private int quantityFPL;
-    private int quantityFPC;
-    private int quantityPGB;
-    private int quantityFPA;
-    private int quantityDL24;
+    @OneToMany(cascade =
+            CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<UserConcreteShare> userConcreteShares;
     private int enabled;
 }
