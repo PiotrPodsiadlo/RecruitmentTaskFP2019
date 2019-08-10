@@ -79,18 +79,20 @@
                 </tr>
 
                 <c:forEach items="${shares}" var="share">
-                    <tr>
-                        <td class="tg-0lax"><c:out value="${share.name}"/></td>
-                        <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
-                        <td class="tg-0lax"><c:out value="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count()}"/></td>
-                        <td class="tg-0lax"><c:out value="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count() * share.unitPrice}"/></td>
-                        <td class="tg-0lax">
-                            <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
+                    <C:if test="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count()>0}">
+                        <tr>
+                            <td class="tg-0lax"><c:out value="${share.name}"/></td>
+                            <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
+                            <td class="tg-0lax"><c:out value="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count()}"/></td>
+                            <td class="tg-0lax"><c:out value="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count() * share.unitPrice}"/></td>
+                            <td class="tg-0lax">
+                                <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
 
-                                <input type="submit" value="sell">
-                            </form:form>
-                        </td>
-                    </tr>
+                                    <input type="submit" value="sell">
+                                </form:form>
+                            </td>
+                        </tr>
+                    </C:if>
                 </c:forEach>
 
 
