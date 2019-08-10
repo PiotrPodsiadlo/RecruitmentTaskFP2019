@@ -45,17 +45,17 @@
                     <td class="tg-m71n">Actions</td>
                 </tr>
                 <c:forEach items="${shares}" var="share">
-                    <tr>
-                        <C:if test="${share.quantity>0}">
-                        <td class="tg-0lax"><c:out value="${share.name}"/></td>
-                        <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
-                        <td class="tg-0lax">
-                            <form:form method="post" action="/buy/${share.id}" modelAttribute="user">
-                                <input type="submit" value="buy">
-                            </form:form>
-                        </td>
-                        </C:if>
-                    </tr>
+                     <C:if test="${share.quantity>0}">
+                        <tr>
+                            <td class="tg-0lax"><c:out value="${share.name}"/></td>
+                            <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
+                            <td class="tg-0lax">
+                                <form:form method="post" action="/buy/${share.id}" modelAttribute="user">
+                                    <input type="submit" value="buy">
+                                </form:form>
+                            </td>
+                        </tr>
+                     </C:if>
                 </c:forEach>
 
 
@@ -78,21 +78,20 @@
                     <td class="tg-m71n">Actions</td>
                 </tr>
 
-                <tr>
-                    <td class="tg-0lax">FP</td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax"></td>
-                    <td class="tg-0lax">
-                        <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
+                <c:forEach items="${realUser.shares}" var="share">
+                    <tr>
+                        <td class="tg-0lax"><c:out value="${share.name}"/></td>
+                        <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax">
+                            <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
 
-                            <input type="submit" value="sell">
-                        </form:form>
-
-
-                    </td>
-                </tr>
-
+                                <input type="submit" value="sell">
+                            </form:form>
+                        </td>
+                    </tr>
+                </c:forEach>
 
 
                 <tr>
