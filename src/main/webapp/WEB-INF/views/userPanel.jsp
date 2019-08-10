@@ -33,7 +33,7 @@
     </div>
 
 
-    <div style="float: left">
+    <div style="float: left" class="operationtable">
         <table>
             <table class="tg">
                 <tr>
@@ -64,7 +64,7 @@
         </table>
     </div>
 
-    <div style="float: right">
+    <div style="float: right" class="operationtable">
         <table>
             <table class="tg">
                 <tr>
@@ -102,9 +102,14 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
         <%@include file="/WEB-INF/resources/app.js" %>
     </script>
+
+
+
+
 
 </body>
 </html>
