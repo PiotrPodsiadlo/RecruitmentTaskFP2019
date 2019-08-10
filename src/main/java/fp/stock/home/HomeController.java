@@ -1,6 +1,7 @@
 package fp.stock.home;
 
 
+import fp.stock.share.Share;
 import fp.stock.share.ShareRepository;
 import fp.stock.share.ShareService;
 import fp.stock.user.User;
@@ -8,6 +9,7 @@ import fp.stock.user.UserDto;
 import fp.stock.user.UserRepository;
 import fp.stock.user.UserService;
 import fp.stock.userConcreteShare.UserConcreteShare;
+import fp.stock.userConcreteShare.UserConcreteShareRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,10 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -30,13 +29,18 @@ public class HomeController {
     private UserRepository userRepository;
     private ShareService shareService;
     private ShareRepository shareRepository;
+    private UserConcreteShareRepository userConcreteShareRepository;
 
     @Autowired
-    public HomeController(UserService userService, UserRepository userRepository, ShareService shareService, ShareRepository shareRepository) {
+    public HomeController(UserService userService, UserRepository userRepository, ShareService shareService, ShareRepository shareRepository, UserConcreteShareRepository userConcreteShareRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.shareService = shareService;
         this.shareRepository = shareRepository;
+        this.userConcreteShareRepository = userConcreteShareRepository;
+
+
+
     }
 
     @GetMapping("/")
@@ -60,21 +64,31 @@ public class HomeController {
         return "home";
     }
 
-
-
-
-
     @GetMapping("/admin")
     public String userInfo(@AuthenticationPrincipal UserDetails customUser, Model model) {
         User user = userService.findByName(customUser.getUsername());
         model.addAttribute("user", customUser);
         model.addAttribute("realUser", user);
         model.addAttribute("shares", shareRepository.findAll());
-
-
         return "userPanel";
 
     }
+
+
+    @PostMapping("/buy/{id}")
+    public String buyStock(@PathVariable Long id, @AuthenticationPrincipal UserDetails customUser, Model model) {
+        Share share = shareRepository.getOne(id);
+        User user = userService.findByName(customUser.getUsername());
+        UserConcreteShare userConcreteShare = new UserConcreteShare();
+        userConcreteShare.setShare(share);
+        userConcreteShare.setUser(user);
+        userConcreteShareRepository.save(userConcreteShare);
+
+        return "userPanel";
+    }
+
+
+
 
 
 }
