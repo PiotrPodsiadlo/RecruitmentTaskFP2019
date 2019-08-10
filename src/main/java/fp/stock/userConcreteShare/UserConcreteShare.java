@@ -14,7 +14,9 @@ public class UserConcreteShare {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    private Share usersShare;
-    private Long quantityOfUserShares;
+    @ManyToOne
+    private Share share;
+    @ManyToOne
+    private User user;
+
 }

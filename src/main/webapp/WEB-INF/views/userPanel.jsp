@@ -47,7 +47,12 @@
                     <tr>
                         <td class="tg-0lax"><c:out value="${share.name}"/></td>
                         <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
-                        <td class="tg-0lax">buy</td>
+                        <td class="tg-0lax">
+                            <form:form method="post" action="/buy/${share.id}" modelAttribute="user">
+
+                                <input type="submit" value="buy">
+                            </form:form>
+                        </td>
                     </tr>
                 </c:forEach>
 
@@ -76,7 +81,14 @@
                     <td class="tg-0lax"></td>
                     <td class="tg-0lax"></td>
                     <td class="tg-0lax"></td>
-                    <td class="tg-0lax">sell</td>
+                    <td class="tg-0lax">
+                        <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
+
+                            <input type="submit" value="sell">
+                        </form:form>
+
+
+                    </td>
                 </tr>
 
 

@@ -3,6 +3,7 @@ import fp.stock.userConcreteShare.UserConcreteShare;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,9 +20,7 @@ public class User {
     @Size(min = 2)
     private String password;
     private double financialResources;
-    @OneToMany(cascade =
-            CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private List<UserConcreteShare> userConcreteShares;
+    @OneToMany(mappedBy = "user")
+    private List<UserConcreteShare> userConcreteShares = new ArrayList<>();
     private int enabled;
 }
