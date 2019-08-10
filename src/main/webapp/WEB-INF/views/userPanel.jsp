@@ -51,7 +51,7 @@
                             <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
                             <td class="tg-0lax">
                                 <form:form method="post" action="/buy/${share.id}" modelAttribute="user">
-                                    <input type="submit" value="buy">
+                                    <button type="submit">buy</button>
                                 </form:form>
                             </td>
                         </tr>
@@ -87,15 +87,12 @@
                             <td class="tg-0lax"><c:out value="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count() * share.unitPrice}"/></td>
                             <td class="tg-0lax">
                                 <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
-
-                                    <input type="submit" value="sell">
+                                    <button type="submit">sell</button>
                                 </form:form>
                             </td>
                         </tr>
                     </C:if>
                 </c:forEach>
-
-
                 <tr>
                     <th class="tg-0lax" colspan="5">Available Money: <c:out value=" ${realUser.financialResources}"/> </th>
                 </tr>
