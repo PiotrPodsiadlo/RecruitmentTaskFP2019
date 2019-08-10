@@ -16,5 +16,5 @@ public class Share {
     private Long id;
     private String name;
     private Long quantity;
-    private Long unitPrice;
+    private Double unitPrice;
 }

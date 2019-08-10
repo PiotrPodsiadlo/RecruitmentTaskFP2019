@@ -1,6 +1,5 @@
 package fp.stock.share;
 
-import fp.stock.DemoApplication;
 import fp.stock.restScheduler.StockFixtures;
 import fp.stock.restScheduler.StockItem;
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -33,6 +33,13 @@ public class ShareService {
         log.info(sharesToPriceUpdate.toString());
         log.info(items.toString());
 
+        for (Share share: sharesToPriceUpdate) {
+            Optional<StockItem> matchingObjectitems = items.stream().filter(i -> i.getCode().equals(share.getName())).findFirst();
+            StockItem item = matchingObjectitems.get();
+            share.setUnitPrice(Double.parseDouble(item.getPrice()));
+            shareRepository.save(share);
+            Share shareFromDb = shareRepository.getOne(share.getId());
+        }
 
 
     }

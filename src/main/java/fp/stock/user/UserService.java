@@ -43,7 +43,6 @@ public class UserService {
 
     public void update(User user1, UserDetails customUser){
         User user = findByName(customUser.getUsername());
-//        user.setId(user1.getId());
         user.setName(user1.getName());
         user.setPassword(passwordEncoder.encode(user1.getPassword()));
         user.setFinancialResources(user1.getFinancialResources());
