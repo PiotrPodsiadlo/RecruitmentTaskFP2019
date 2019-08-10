@@ -78,11 +78,11 @@
                     <td class="tg-m71n">Actions</td>
                 </tr>
 
-                <c:forEach items="${realUser.shares}" var="share">
+                <c:forEach items="${shares}" var="share">
                     <tr>
                         <td class="tg-0lax"><c:out value="${share.name}"/></td>
                         <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
-                        <td class="tg-0lax"></td>
+                        <td class="tg-0lax"><c:out value="${realUser.shares.stream().filter(elem -> elem.id.equals(share.id)).count()}"/></td>
                         <td class="tg-0lax"></td>
                         <td class="tg-0lax">
                             <form:form method="post" action="/sell/${share.id}" modelAttribute="user">
