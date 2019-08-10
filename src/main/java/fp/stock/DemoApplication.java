@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -23,6 +24,9 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
         System.out.println("let's start!");
 
+        RestTemplate restTemplate = new RestTemplate();
+        StockFixtures stockFixtures = restTemplate.getForObject("http://webtask.future-processing.com:8068/stocks", StockFixtures.class);
+        log.info(stockFixtures.toString());
     }
 
     @Bean

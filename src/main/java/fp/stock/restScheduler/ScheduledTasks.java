@@ -14,7 +14,7 @@ public class ScheduledTasks {
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
-    @Scheduled(fixedRate = 2000)
+   // @Scheduled(fixedRate = 2000)
     public void scheduleTaskWithFixedRate() {
         logger.info("Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()) );
 

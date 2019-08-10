@@ -1,13 +1,17 @@
 package fp.stock.user;
 
 
+import fp.stock.restScheduler.StockFixtures;
 import fp.stock.share.Share;
 import fp.stock.share.ShareRepository;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -82,7 +86,10 @@ public class UserService {
     }
     @Scheduled(fixedRate = 2000)
     public void dupa(){
-        System.out.println("dupa");
+        RestTemplate restTemplate = new RestTemplate();
+        StockFixtures stockFixtures = restTemplate.getForObject("http://webtask.future-processing.com:8068/stocks", StockFixtures.class);
+        System.out.println(stockFixtures.getItems());
+
     }
 
 }
