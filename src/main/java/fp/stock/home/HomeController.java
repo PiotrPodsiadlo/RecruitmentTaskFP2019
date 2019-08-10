@@ -65,6 +65,12 @@ public class HomeController {
         model.addAttribute("user", customUser);
         model.addAttribute("realUser", user);
         model.addAttribute("shares", shareRepository.findAll());
+        model.addAttribute("FP", shareRepository.findFirstByName("FP"));
+        model.addAttribute("FPL", shareRepository.findFirstByName("FPL"));
+        model.addAttribute("FPC", shareRepository.findFirstByName("FPC"));
+        model.addAttribute("PGB", shareRepository.findFirstByName("PGB"));
+        model.addAttribute("FPA", shareRepository.findFirstByName("FPA"));
+        model.addAttribute("DL24", shareRepository.findFirstByName("DL24"));
 
         return "userPanel";
 

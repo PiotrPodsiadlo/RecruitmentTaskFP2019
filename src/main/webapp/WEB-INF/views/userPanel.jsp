@@ -70,16 +70,50 @@
                     <td class="tg-m71n">Value</td>
                     <td class="tg-m71n">Actions</td>
                 </tr>
-                <c:forEach items="${shares}" var="share">
 
                 <tr>
-                    <td class="tg-0lax"><c:out value=" ${share.name}"/></td>
-                    <td class="tg-0lax"><c:out value="${share.unitPrice}"/></td>
+                    <td class="tg-0lax">FP</td>
+                    <td class="tg-0lax"><c:out value="${FP.unitPrice}"/></td>
                     <td class="tg-0lax"><c:out value=" ${realUser.quantityFP}"/></td>
-                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFP * share.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFP * FP.unitPrice}"/></td>
                     <td class="tg-0lax">sell</td>
                 </tr>
-                </c:forEach>
+                <tr>
+                    <td class="tg-0lax">FPL</td>
+                    <td class="tg-0lax"><c:out value="${FPL.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFPL}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFPL * FPL.unitPrice}"/></td>
+                    <td class="tg-0lax">sell</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">FPC</td>
+                    <td class="tg-0lax"><c:out value="${FPC.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFPC}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFPC * FPC.unitPrice}"/></td>
+                    <td class="tg-0lax">sell</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">PGB</td>
+                    <td class="tg-0lax"><c:out value="${PGB.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityPGB}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityPGB * PGB.unitPrice}"/></td>
+                    <td class="tg-0lax">sell</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">FPA</td>
+                    <td class="tg-0lax"><c:out value="${FPA.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFPA}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityFPA * FPA.unitPrice}"/></td>
+                    <td class="tg-0lax">sell</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">DL24</td>
+                    <td class="tg-0lax"><c:out value="${DL24.unitPrice}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityDL24}"/></td>
+                    <td class="tg-0lax"><c:out value=" ${realUser.quantityDL24 * DL24.unitPrice}"/></td>
+                    <td class="tg-0lax">sell</td>
+                </tr>
+
 
                 <tr>
                     <th class="tg-0lax" colspan="5">Available Money: <c:out value=" ${realUser.financialResources}"/> </th>

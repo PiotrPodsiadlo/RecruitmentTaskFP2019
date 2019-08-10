@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ShareRepository  extends JpaRepository<Share, Long> {
+
+    Share findFirstByName(String Name);
 }
