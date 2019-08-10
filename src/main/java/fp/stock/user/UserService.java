@@ -84,12 +84,6 @@ public class UserService {
         shareRepository.save(share);
 
     }
-    @Scheduled(fixedRate = 2000)
-    public void dupa(){
-        RestTemplate restTemplate = new RestTemplate();
-        StockFixtures stockFixtures = restTemplate.getForObject("http://webtask.future-processing.com:8068/stocks", StockFixtures.class);
-        System.out.println(stockFixtures.getItems());
 
-    }
 
 }

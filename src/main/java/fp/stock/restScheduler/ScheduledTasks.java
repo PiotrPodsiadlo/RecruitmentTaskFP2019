@@ -23,9 +23,5 @@ public class ScheduledTasks {
 
 
 
-    public void scheduleTaskWithFixedDelay() {}
 
-    public void scheduleTaskWithInitialDelay() {}
-
-    public void scheduleTaskWithCronExpression() {}
 }

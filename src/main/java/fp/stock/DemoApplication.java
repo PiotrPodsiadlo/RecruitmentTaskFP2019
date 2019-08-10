@@ -23,10 +23,6 @@ public class DemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
         System.out.println("let's start!");
-
-        RestTemplate restTemplate = new RestTemplate();
-        StockFixtures stockFixtures = restTemplate.getForObject("http://webtask.future-processing.com:8068/stocks", StockFixtures.class);
-        log.info(stockFixtures.toString());
     }
 
     @Bean
