@@ -82,7 +82,13 @@ public class HomeController {
         return "redirect:/admin";
     }
 
-
+    @PostMapping("/sell/{id}")
+    public String sellStock(@PathVariable Long id, @AuthenticationPrincipal UserDetails customUser, Model model) {
+        Share share = shareRepository.getOne(id);
+        User user = userService.findByName(customUser.getUsername());
+        userService.sellShares(user, share);
+        return "redirect:/admin";
+    }
 
 
 

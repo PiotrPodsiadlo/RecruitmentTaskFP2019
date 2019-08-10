@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 @Transactional
@@ -49,6 +50,20 @@ public class UserService {
         }else{
             System.out.println("not enough shares of this type or not enough mney to buy");
         }
+    }
+
+
+    public void sellShares(User user, Share share){
+
+        List<Share> shareList = user.getShares();
+        shareList.remove(share);
+        user.setShares(shareList);
+
+        user.setFinancialResources(user.getFinancialResources()+share.getUnitPrice());
+        share.setQuantity(share.getQuantity()+1);
+        userRepository.save(user);
+        shareRepository.save(share);
+
     }
 
 }
