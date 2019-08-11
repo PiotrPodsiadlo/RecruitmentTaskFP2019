@@ -1,4 +1,4 @@
-package com.stock;
+package fp.stock;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
