@@ -1,0 +1,3 @@
+INSERT INTO `user` VALUES (1,1,56.91,'admin','$2a$10$Vwjq8NqcMciBihrYfgJHyO9HUBM53gpoEudrwbhwXQxAwkbulmGhy');
+INSERT INTO `share` VALUES (1,'FP',8,5.08590),(2,'FPL',35,3.62690),(3,'FPC',2,16.95870),(4,'PGB',37,4.20980),(5,'FPA',40,12.00140),(6,'DL24',40,5.27670);
+INSERT INTO `user_shares` VALUES (1,4),(1,4),(1,4),(1,4),(1,4),(1,4),(1,4),(1,3),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,2),(1,1),(1,1);
