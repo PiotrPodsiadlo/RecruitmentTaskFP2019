@@ -6,7 +6,7 @@ In order to run application:
 
 3. File -> new -> Project from existing sources
 
-4. choose Maven project and follow the rest of instructions by clicking "next" until project is ready
+4. Choose Maven project and follow the rest of instructions by clicking "next" until project is ready
 
 In order to use Database:
 
