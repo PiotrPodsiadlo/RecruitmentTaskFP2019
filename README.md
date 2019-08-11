@@ -14,7 +14,8 @@ To use data described in application.properties:
 
 create schema FP_Recruitment
 
-after running application import Dump20190811-3
+after running application initial data will be loaded from resources/data.sql (due to spring.datasource.initialization-mode=always entry in application.properties)
+In case of problems please import data from Dump20190811-3 or change credentials in IntelliJ idea database settings.
 
 Dump contains sample user and all type of available shares with specific amount and user's wallet (financial resources and user's shares available from the beginning);
 
